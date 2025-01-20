@@ -1,11 +1,10 @@
 import { relations } from "drizzle-orm";
-import { integer, pgTable, text, timestamp, uuid, varchar } from "drizzle-orm/pg-core";
+import { pgTable, text, timestamp, uuid, varchar } from "drizzle-orm/pg-core";
 
 // neon, drizzle
 export const user = pgTable("user", {
     id: uuid("id").defaultRandom().notNull().primaryKey(),
     name: varchar({ length: 255 }).notNull(),
-    age: integer().notNull(),
     email: varchar({ length: 255 }).notNull().unique(),
     password: varchar({ length: 255 }).notNull(),
     createdAt: timestamp("created_at").defaultNow().notNull(),
